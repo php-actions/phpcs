@@ -30,6 +30,8 @@ then
 	command_string+=($ACTION_ARGS)
 fi
 
+echo "Command: ${command_string[@]}"
+
 docker run --rm \
 	--volume "${phar_path}":/usr/local/bin/phpcs \
 	--volume "${GITHUB_WORKSPACE}":/app \
