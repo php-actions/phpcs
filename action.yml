@@ -1,0 +1,52 @@
+name: PHP Code Sniffer (php-actions)
+description: Run your PHP Code Sniffer tests in your Github Actions.
+
+inputs:
+  version:
+    description: What version of PHPCS to use
+    default: latest
+    required: false
+
+  php_version:
+    description: What version of PHP to use
+    default: latest
+    required: false
+
+  vendored_phpcs_path:
+    description: Path to a vendored phpcs binary
+    required: false
+
+  path:
+    description: One or more files and/or directories to check
+    required: true
+
+  standard:
+    description: The name or path of the coding standard to use
+    required: true
+
+  args:
+    description: Extra arguments to pass to the phpcs binary
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - env:
+        ACTION_TOKEN: ${{ github.token }}
+        ACTION_VERSION: ${{ inputs.version }}
+        ACTION_PHP_VERSION: ${{ inputs.php_version }}
+        ACTION_PHPCS_PATH: ${{ inputs.vendored_phpcs_path }}
+        ACTION_PATH: ${{ inputs.path }}
+        ACTION_STANDARD: ${{ inputs.standard }}
+        ACTION_ARGS: ${{ inputs.args }}
+
+      id: phpcs_run
+      run: |
+        set -e
+        bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/cee5b9fa9fbc4c888e7a62bbb7b8eade18e3c56b/php-build.bash) phpcs
+        ${{ github.action_path }}/phpcs-action.bash
+      shell: bash
+
+branding:
+  icon: 'check-square'
+  color: 'purple'
