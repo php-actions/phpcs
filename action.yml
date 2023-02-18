@@ -24,6 +24,63 @@ inputs:
     description: The name or path of the coding standard to use
     required: true
 
+  sniffs:
+    description: A comma separated list of sniff codes to include checking (all sniffs must be part of the specified standard)
+    required: false
+
+  exclude:
+    description: A comma separated list of sniff codes to exclude from checking (all sniffs must be part of the specified standard)
+    required: false
+
+  ignore:
+    description: A comma separated list of patterns to ignore files and directories
+    required: false
+
+  tab_width:
+    description: The number of spaces each tab represents
+    required: false
+
+  report:
+    description: Print either the "full", "xml", "checkstyle", "csv", "json", "junit", "emacs", "source", "summary", "diff", "svnblame", "gitblame", "hgblame" or "notifysend" report, or specify the path to a custom report class, (the "full" report is printed by default)
+    required: true
+    default: full
+
+  report_file:
+    description: Write the report to the specified file path
+    required: false
+
+  report_width:
+    description: How many columns wide screen reports should be printed or set to "auto" to use current screen width, where supported
+    required: false
+
+  basepath:
+    description: A path to strip from the front of file paths inside reports
+    required: false
+
+  bootstrap:
+    description: A comma separated list of files to run before processing begins
+    required: false
+
+  encoding:
+    description: The encoding of the files being checked (default is utf-8)
+    required: false
+
+  extensions:
+    description: "A comma separated list of file extensions to check. The type of the file can be specified using: ext/type e.g., module/php,es/js"
+    required: false
+
+  severity:
+    description: The minimum severity required to display an error or warning
+    required: false
+
+  error_severity:
+    description: The minimum severity required to display an error
+    required: false
+
+  warning_severity:
+    description: The minimum severity required to display a warning
+    required: false
+
   args:
     description: Extra arguments to pass to the phpcs binary
     required: false
@@ -38,6 +95,20 @@ runs:
         ACTION_PHPCS_PATH: ${{ inputs.vendored_phpcs_path }}
         ACTION_PATH: ${{ inputs.path }}
         ACTION_STANDARD: ${{ inputs.standard }}
+        ACTION_SNIFFS: ${{ inputs.sniffs }}
+        ACTION_EXCLUDE: ${{ inputs.exclude }}
+        ACTION_IGNORE: ${{ inputs.ignore }}
+        ACTION_TAB_WIDTH: ${{ inputs.tab_width }}
+        ACTION_REPORT: ${{ inputs.report }}
+        ACTION_REPORT_FILE: ${{ inputs.report_file }}
+        ACTION_REPORT_WIDTH: ${{ inputs.report_width }}
+        ACTION_BASEPATH: ${{ inputs.basepath }}
+        ACTION_BOOTSTRAP: ${{ inputs.bootstrap }}
+        ACTION_ENCODING: ${{ inputs.encoding }}
+        ACTION_EXTENSIONS: ${{ inputs.extensions }}
+        ACTION_SEVERITY: ${{ inputs.severity }}
+        ACTION_ERROR_SEVERITY: ${{ inputs.error_severity }}
+        ACTION_WARNING_SEVERITY: ${{ inputs.warning_severity }}
         ACTION_ARGS: ${{ inputs.args }}
 
       id: phpcs_run
