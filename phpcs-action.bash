@@ -5,7 +5,7 @@ docker_tag=$(cat ./docker_tag)
 
 if [ -z "$ACTION_PHPCS_PATH" ]
 then
-	phar_url="https://www.getrelease.download/squizlabs/PHP_CodeSniffer/$ACTION_VERSION/phpcs.phar"
+	phar_url="https://www.getrelease.download/PHPCSStandards/PHP_CodeSniffer/$ACTION_VERSION/phpcs.phar"
 	phar_path="${github_action_path}/phpcs.phar"
 	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
