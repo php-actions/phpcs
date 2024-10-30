@@ -95,6 +95,16 @@ then
 	command_string+=(--warning-severity="$ACTION_WARNING_SEVERITY")
 fi
 
+if [ -n "$ACTION_IGNORE_WARNINGS_ON_EXIT" ]
+then
+	command_string+=(--runtime-set ignore_warnings_on_exit "$ACTION_IGNORE_WARNINGS_ON_EXIT")
+fi
+
+if [ -n "$ACTION_IGNORE_ERRORS_ON_EXIT" ]
+then
+	command_string+=(--runtime-set ignore_errors_on_exit "$ACTION_IGNORE_ERRORS_ON_EXIT")
+fi
+
 if [ -n "$ACTION_ARGS" ]
 then
 	command_string+=($ACTION_ARGS)

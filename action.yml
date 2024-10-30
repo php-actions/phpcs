@@ -81,6 +81,14 @@ inputs:
     description: The minimum severity required to display a warning
     required: false
 
+  ignore_warnings_on_exit:
+    desctiption: Exit with a zero error code despite the presence of warnings (1 = true, default 0 = false).
+    required: false
+
+  ignore_errors_on_exit:
+    description: Exit with a zero error code despite the presence of errors (1 = true, default 0 = false).
+    required: false
+
   args:
     description: Extra arguments to pass to the phpcs binary
     required: false
