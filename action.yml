@@ -82,11 +82,11 @@ inputs:
     required: false
 
   ignore_warnings_on_exit:
-    desctiption: Exit with a zero error code despite the presence of warnings (1 = true, default 0 = false).
+    description: Exit with a zero error code despite the presence of warnings
     required: false
 
   ignore_errors_on_exit:
-    description: Exit with a zero error code despite the presence of errors (1 = true, default 0 = false).
+    description: Exit with a zero error code despite the presence of errors
     required: false
 
   args:
@@ -117,6 +117,8 @@ runs:
         ACTION_SEVERITY: ${{ inputs.severity }}
         ACTION_ERROR_SEVERITY: ${{ inputs.error_severity }}
         ACTION_WARNING_SEVERITY: ${{ inputs.warning_severity }}
+        ACTION_IGNORE_WARNINGS_ON_EXIT: ${{ inputs.ignore_warnings_on_exit }}
+        ACTION_IGNORE_ERRORS_ON_EXIT: ${{ inputs.ignore_errors_on_exit }}
         ACTION_ARGS: ${{ inputs.args }}
 
       id: phpcs_run
