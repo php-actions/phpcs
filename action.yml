@@ -81,6 +81,14 @@ inputs:
     description: The minimum severity required to display a warning
     required: false
 
+  ignore_warnings_on_exit:
+    description: Exit with a zero error code despite the presence of warnings
+    required: false
+
+  ignore_errors_on_exit:
+    description: Exit with a zero error code despite the presence of errors
+    required: false
+
   args:
     description: Extra arguments to pass to the phpcs binary
     required: false
@@ -109,6 +117,8 @@ runs:
         ACTION_SEVERITY: ${{ inputs.severity }}
         ACTION_ERROR_SEVERITY: ${{ inputs.error_severity }}
         ACTION_WARNING_SEVERITY: ${{ inputs.warning_severity }}
+        ACTION_IGNORE_WARNINGS_ON_EXIT: ${{ inputs.ignore_warnings_on_exit }}
+        ACTION_IGNORE_ERRORS_ON_EXIT: ${{ inputs.ignore_errors_on_exit }}
         ACTION_ARGS: ${{ inputs.args }}
 
       id: phpcs_run

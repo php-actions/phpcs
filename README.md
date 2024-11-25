@@ -69,6 +69,8 @@ The following configuration options are available:
 + `severity` - The minimum severity required to display an error or warning
 + `error_severity` - The minimum severity required to display an error
 + `warning_severity` - The minimum severity required to display a warning
++ `ignore_warnings_on_exit` - Exit with a zero error code despite the presence of warnings (1 = true, default 0 = false).
++ `ignore_errors_on_exit` - xit with a zero error code despite the presence of errors (1 = true, default 0 = false).
 + `args` - Extra arguments to pass to the phpcs binary
 
 If you require other configurations of PHPMD, please request them in the [Github issue tracker].
