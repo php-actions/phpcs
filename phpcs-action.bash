@@ -12,7 +12,9 @@ else
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPCS_PATH"
 fi
 
-chmod +x $phar_path
+if ! [ -x "$phar_path" ]; then
+    chmod +x $phar_path
+fi
 command_string=("phpcs")
 
 if [ -n "$ACTION_PATH" ]
