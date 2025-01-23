@@ -2,6 +2,7 @@
 set -e
 github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
+command_string=("phpcs")
 
 if [ -z "$ACTION_PHPCS_PATH" ]
 then
@@ -10,12 +11,12 @@ then
 	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPCS_PATH"
+	command_string=("$ACTION_PHPCS_PATH")
 fi
 
 if ! [ -x "$phar_path" ]; then
     chmod +x $phar_path
 fi
-command_string=("phpcs")
 
 if [ -n "$ACTION_PATH" ]
 then
